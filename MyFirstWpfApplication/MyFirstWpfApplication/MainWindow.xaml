@@ -6,9 +6,29 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:MyFirstWpfApplication"
         mc:Ignorable="d"
-        Title="留言板" Height="233" Width="400">
+        Title="留言板" >
     <Window.Resources>
         <sys:String x:Key="myString">Hello WPF Resource!</sys:String>
+        <XmlDataProvider x:Key="xdp" XPath="FileSystem/Folder">
+            <x:XData>
+                <FileSystem xmlns="">
+                    <Folder Name="Books">
+                        <Folder Name="Programming">
+                            <Folder Name="Windows">
+                                <Folder Name="WPF"></Folder>
+                                <Folder Name="MFC"></Folder>
+                                <Folder Name="Delphi"></Folder>
+                            </Folder>
+                        </Folder>
+                        <Folder Name="Tools">
+                            <Folder Name="Development"></Folder>
+                            <Folder Name="Designment"></Folder>
+                            <Folder Name="Players"></Folder>
+                        </Folder>
+                    </Folder>
+                </FileSystem>
+            </x:XData>
+        </XmlDataProvider>
     </Window.Resources>
     <!-- Grid -->
     <!--<Grid x:Name="gridMain" >
@@ -106,9 +126,75 @@
         <Button Content="Add Age" Margin="5" Click="Button_Click" ></Button>
     </StackPanel>-->
 
-    <StackPanel>
+    <!--<StackPanel>
         <TextBox x:Name="textBox" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Value, ElementName=slider1}" BorderBrush="Black" Margin="5"></TextBox>
         <Slider x:Name="slider1" Maximum="100" Margin="5"></Slider>
-    </StackPanel>
+    </StackPanel>-->
 
+    <!--<StackPanel Background="LightBlue">
+        <StackPanel.DataContext>
+            <local:Student ID="6" Age="29" Name="Tim"></local:Student>
+        </StackPanel.DataContext>
+        <Grid>
+            <StackPanel>
+                <TextBox Text="{Binding ID}" Margin="5"></TextBox>
+                <TextBox Text="{Binding Age}" Margin="5"></TextBox>
+                <TextBox Text="{Binding Name}" Margin="5"></TextBox>
+            </StackPanel>
+        </Grid>
+    </StackPanel>-->
+
+    <!--<StackPanel>
+        <StackPanel.DataContext>
+            <sys:String>Hello DataContext</sys:String>
+        </StackPanel.DataContext>
+        <Grid>
+            <StackPanel>
+                <TextBox Text="{Binding Mode=OneWay}" Margin="5"></TextBox>
+                <TextBlock Text="{Binding}" Margin="5"></TextBlock>
+                <TextBlock Text="{Binding}" Margin="5"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </StackPanel>-->
+
+    <!--<StackPanel x:Name="stackPanel" Background="LightBlue">
+        <TextBlock Text="Student ID:" FontWeight="Bold" Margin="5"></TextBlock>
+        <TextBox x:Name="textBoxId" Margin="5"></TextBox>
+        <TextBlock Text="Student List:" FontWeight="Bold" Margin="5"></TextBlock>
+        <ListBox x:Name="listBoxStudents" Height="110" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=ID}" Width="30"></TextBlock>
+                        <TextBlock Text="{Binding Path=Name}" Width="50"></TextBlock>
+                        <TextBlock Text="{Binding Path=Age}" Width="30"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>-->
+
+    <!--<Grid>
+        <TreeView ItemsSource="{Binding Source={StaticResource ResourceKey=xdp}}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding XPath=Folder}">
+                    <Label Content="{Binding Mode=OneWay, XPath=@Name }"></Label>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>-->
+
+    <StackPanel Background="LightBlue">
+        <ListView x:Name="listViewStudents" Height="143" Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="60" DisplayMemberBinding="{Binding ID}" />
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Age" Width="80" DisplayMemberBinding="{Binding Age}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Load" Height="25" Margin="5,0" Click="Button_Click"></Button>
+    </StackPanel>
+        
 </Window>
