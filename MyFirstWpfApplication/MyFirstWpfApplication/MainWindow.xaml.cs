@@ -20,15 +20,24 @@ namespace MyFirstWpfApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Student stu;
+
         public MainWindow()
         {
             InitializeComponent();
+            stu = new Student();
+
+            Binding binding = new Binding();
+            binding.Source = stu;
+            binding.Path = new PropertyPath("Name");
+
+            //BindingOperations.SetBinding(this.textBoxName, TextBox.TextProperty, binding);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Human h = (Human)this.FindResource("human");
-            MessageBox.Show(h.Child.Name);
+            //this.textBox.Text = this.FindResource("myString") as String;
+            stu.Name += "Name";
         }
     }
 }
