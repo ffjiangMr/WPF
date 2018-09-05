@@ -29,6 +29,8 @@
                 </FileSystem>
             </x:XData>
         </XmlDataProvider>
+        <local:CategoryToSourceConverter x:Key="cts"/>
+        <local:StateToNullableBooleanConverter x:Key="stnb"/>
     </Window.Resources>
     <!-- Grid -->
     <!--<Grid x:Name="gridMain" >
@@ -184,7 +186,7 @@
         </TreeView>
     </Grid>-->
 
-    <StackPanel Background="LightBlue">
+    <!--<StackPanel Background="LightBlue">
         <ListView x:Name="listViewStudents" Height="143" Margin="5">
             <ListView.View>
                 <GridView>
@@ -195,6 +197,52 @@
             </ListView.View>
         </ListView>
         <Button Content="Load" Height="25" Margin="5,0" Click="Button_Click"></Button>
+    </StackPanel>-->
+
+    <!--<StackPanel Background="LightBlue">
+        <Button x:Name="btn" Content="Load" Margin="10" Click="Button_Click"/>
+        <TextBox x:Name="textBoxArg1" Margin="5"/>
+        <TextBox x:Name="textBoxArg2" Margin="5"/>
+        <TextBox x:Name="textBoxResult" Margin="5"/>
+    </StackPanel>-->
+
+    <!--<Grid x:Name="g1" Background="Red" Margin="10">
+        <DockPanel x:Name="d1" Background="Orange" Margin="10">
+            <Grid x:Name="g2" Background="Yellow" Margin="10" >
+                <DockPanel x:Name="d2" Background="LawnGreen" Margin="10">
+                    <TextBox x:Name="textBox1" FontSize="24" Margin="10"/>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>-->
+
+    <!--<StackPanel>
+        <TextBox x:Name="textBox1" Margin="5"/>
+        <Slider x:Name="slider1" Minimum="-10" Maximum="1100" Margin="5"/>
+    </StackPanel>-->
+
+    <!--<StackPanel Background="LightBlue">
+        <ListBox x:Name="listBoxPlane" Height="160" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Source="{Binding Path=Category,Converter={StaticResource cts}}"/>
+                        <TextBlock Text="{Binding Path=Name}" Width="60" Margin="80,0"/>
+                        <CheckBox IsThreeState="True" IsChecked="{Binding Path=State, Converter={StaticResource stnb}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="buttonLoad" Content="Load" Height="25" Margin="5,0" Click="buttonLoad_Click"/>
+        <Button x:Name="buttonSave" Content="Save" Height="25" Margin="5,5" Click="buttonSave_Click"/>
+    </StackPanel>-->
+
+    <StackPanel Background="LightBlue">
+        <TextBox x:Name="textBox1" Height="23" Margin="5"/>
+        <TextBox x:Name="textBox2" Height="23" Margin="5,0"/>
+        <TextBox x:Name="textBox3" Height="23" Margin="5"/>
+        <TextBox x:Name="textBox4" Height="23" Margin="5,0"/>
+        <Button x:Name="button1" Content="Submit" Width="80" Margin="5"/>
     </StackPanel>
-        
+    
 </Window>

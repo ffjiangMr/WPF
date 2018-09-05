@@ -54,10 +54,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Calculator.cs" />
+    <Compile Include="CategoryToSourceConverter.cs" />
+    <Compile Include="CustomClass.cs" />
     <Compile Include="MyButton.cs" />
     <Compile Include="MyWindow.xaml.cs">
       <DependentUpon>MyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RangeValidationRule.cs" />
     <Compile Include="StringToHumanTypeConverter.cs" />
     <Compile Include="Student.cs" />
     <Page Include="MainWindow.xaml">
@@ -106,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Source\timg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\1.png" />
+    <Resource Include="Icons\2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
