@@ -26,14 +26,14 @@ namespace MyFirstWpfApplication
         {
             InitializeComponent();
 
-            List<Student> stuList = new List<Student>()
-            {
-                new Student(){ID=0,Name="Tim", Age=29, },
-                new Student(){ID=2,Name="Tom", Age=27, },
-                new Student(){ID=3,Name="Kyle", Age=26, },
-                new Student(){ID=4,Name="Tony", Age=25, },
-                new Student(){ID=5,Name="Mike", Age=24, },
-            };
+            //List<Student> stuList = new List<Student>()
+            //{
+            //    new Student(){ID=0,Name="Tim", Age=29, },
+            //    new Student(){ID=2,Name="Tom", Age=27, },
+            //    new Student(){ID=3,Name="Kyle", Age=26, },
+            //    new Student(){ID=4,Name="Tony", Age=25, },
+            //    new Student(){ID=5,Name="Mike", Age=24, },
+            //};
 
             this.SetMultiBinding();
 
@@ -87,12 +87,16 @@ namespace MyFirstWpfApplication
             //    new Student(){ID=5,Name="Mike", Age=24, },
             //};
             //this.listViewStudents.ItemsSource = from stu in stuList where stu.Name.StartsWith("T") select stu;
-            ObjectDataProvider odp = new ObjectDataProvider();
-            odp.ObjectInstance = new Calculator();
-            odp.MethodName = "Add";
-            odp.MethodParameters.Add("100");
-            odp.MethodParameters.Add("200");
-            MessageBox.Show(odp.Data.ToString());
+            //ObjectDataProvider odp = new ObjectDataProvider();
+            //odp.ObjectInstance = new Calculator();
+            //odp.MethodName = "Add";
+            //odp.MethodParameters.Add("100");
+            //odp.MethodParameters.Add("200");
+            //MessageBox.Show(odp.Data.ToString());
+
+            Student stu = new Student();
+            stu.SetValue(Student.NameProperty, this.textBox1.Text);
+            this.textBox2.Text = (String)stu.GetValue(Student.NameProperty);
         }
 
         private void SetBinding()
@@ -145,18 +149,18 @@ namespace MyFirstWpfApplication
 
         private void SetMultiBinding()
         {
-            Binding b1 = new Binding("Text") { Source = this.textBox1 };
-            Binding b2 = new Binding("Text") { Source = this.textBox2 };
-            Binding b3 = new Binding("Text") { Source = this.textBox3 };
-            Binding b4 = new Binding("Text") { Source = this.textBox4 };
-            MultiBinding mb = new MultiBinding() { Mode = BindingMode.OneWay };
-            mb.Bindings.Add(b1);
-            mb.Bindings.Add(b2);
-            mb.Bindings.Add(b3);
-            mb.Bindings.Add(b4);
-            mb.Converter = new LogonMultiBindingConverter();
+            //Binding b1 = new Binding("Text") { Source = this.textBox1 };
+            //Binding b2 = new Binding("Text") { Source = this.textBox2 };
+            //Binding b3 = new Binding("Text") { Source = this.textBox3 };
+            //Binding b4 = new Binding("Text") { Source = this.textBox4 };
+            //MultiBinding mb = new MultiBinding() { Mode = BindingMode.OneWay };
+            //mb.Bindings.Add(b1);
+            //mb.Bindings.Add(b2);
+            //mb.Bindings.Add(b3);
+            //mb.Bindings.Add(b4);
+            //mb.Converter = new LogonMultiBindingConverter();
 
-            this.button1.SetBinding(Button.IsEnabledProperty, mb);
+            //this.button1.SetBinding(Button.IsEnabledProperty, mb);
         }
     }
 }

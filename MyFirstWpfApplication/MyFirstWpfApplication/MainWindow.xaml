@@ -237,12 +237,18 @@
         <Button x:Name="buttonSave" Content="Save" Height="25" Margin="5,5" Click="buttonSave_Click"/>
     </StackPanel>-->
 
-    <StackPanel Background="LightBlue">
+    <!--<StackPanel Background="LightBlue">
         <TextBox x:Name="textBox1" Height="23" Margin="5"/>
         <TextBox x:Name="textBox2" Height="23" Margin="5,0"/>
         <TextBox x:Name="textBox3" Height="23" Margin="5"/>
         <TextBox x:Name="textBox4" Height="23" Margin="5,0"/>
         <Button x:Name="button1" Content="Submit" Width="80" Margin="5"/>
+    </StackPanel>-->
+
+    <StackPanel>
+        <TextBox x:Name="textBox1" BorderBrush="Black" Margin="5"/>
+        <TextBox x:Name="textBox2" BorderBrush="Black" Margin="5"/>
+        <Button Content="OK" Margin="5" Click="Button_Click"/>
     </StackPanel>
     
 </Window>

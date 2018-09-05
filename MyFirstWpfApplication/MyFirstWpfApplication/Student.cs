@@ -1,15 +1,18 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows;
 
 namespace MyFirstWpfApplication
 {
-    public class Student /*: INotifyPropertyChanged*/
+    public class Student:DependencyObject /*: INotifyPropertyChanged*/
     {
         //private String name;
         public Int32 ID { get; set; }
-        public String Name { get; set; }
+        //public String Name { get; set; }
         public Int32 Age { get; set; }
+
+        public static readonly DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(String), typeof(Student));
 
         //public String Name
         //{
