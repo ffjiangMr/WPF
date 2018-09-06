@@ -26,6 +26,11 @@ namespace MyFirstWpfApplication
         {
             InitializeComponent();
 
+            Student stu = new Student();
+            stu.SetBinding(Student.NameProperty, new Binding("Text") { Source = this.textBox1 });
+            this.textBox2.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = stu });
+
+            #region 
             //List<Student> stuList = new List<Student>()
             //{
             //    new Student(){ID=0,Name="Tim", Age=29, },
@@ -35,7 +40,7 @@ namespace MyFirstWpfApplication
             //    new Student(){ID=5,Name="Mike", Age=24, },
             //};
 
-            this.SetMultiBinding();
+            //this.SetMultiBinding();
 
             //Binding binding = new Binding("Value") { Source = this.slider1 };
             //binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
@@ -64,6 +69,7 @@ namespace MyFirstWpfApplication
             //binding.Path = new PropertyPath("Name");
 
             //BindingOperations.SetBinding(this.textBoxName, TextBox.TextProperty, binding);
+            #endregion 
 
         }
 
@@ -77,6 +83,8 @@ namespace MyFirstWpfApplication
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            #region 
             //this.textBox.Text = this.FindResource("myString") as String;
             //List<Student> stuList = new List<Student>()
             //{
@@ -94,9 +102,14 @@ namespace MyFirstWpfApplication
             //odp.MethodParameters.Add("200");
             //MessageBox.Show(odp.Data.ToString());
 
-            Student stu = new Student();
-            stu.SetValue(Student.NameProperty, this.textBox1.Text);
-            this.textBox2.Text = (String)stu.GetValue(Student.NameProperty);
+            //Student stu = new Student();
+            ////stu.SetValue(Student.NameProperty, this.textBox1.Text);
+            //this.textBox2.Text = (String)stu.GetValue(Student.NameProperty);
+            #endregion 
+            Human human = new Human();
+            School.SetGarde(human, 6);
+            Int32 grade = School.GetGarde(human);
+            MessageBox.Show(grade.ToString());
         }
 
         private void SetBinding()

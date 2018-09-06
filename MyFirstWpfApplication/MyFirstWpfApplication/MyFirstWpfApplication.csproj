@@ -62,6 +62,7 @@
       <DependentUpon>MyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RangeValidationRule.cs" />
+    <Compile Include="School.cs" />
     <Compile Include="StringToHumanTypeConverter.cs" />
     <Compile Include="Student.cs" />
     <Page Include="MainWindow.xaml">
