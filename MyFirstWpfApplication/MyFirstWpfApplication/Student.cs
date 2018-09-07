@@ -9,17 +9,25 @@ namespace MyFirstWpfApplication
 
     public class Student : DependencyObject /*: INotifyPropertyChanged*/
     {
+
+        public static readonly RoutedEvent NameChangedEvent = EventManager.RegisterRoutedEvent("NameChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Student));
+
+        public String Name { get; set; }
+        public Int32 Id { get; set; }
+
         //private String name;
-        public Int32 ID { get; set; }
-        public String Name { get { return (String)this.GetValue(NameProperty); } set { this.SetValue(NameProperty, value); } }
-        public Int32 Age { get; set; }
+        //public Int32 ID { get; set; }
+        //public String Name { get { return (String)this.GetValue(NameProperty); } set { this.SetValue(NameProperty, value); } }
+        //public Int32 Age { get; set; }
 
-        public static readonly DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(String), typeof(Student));
+        //public static readonly DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(String), typeof(Student));
 
-        public BindingExpressionBase SetBinding(DependencyProperty dp, BindingBase binding)
-        {
-            return BindingOperations.SetBinding(this,dp,binding);
-        }
+        //public BindingExpressionBase SetBinding(DependencyProperty dp, BindingBase binding)
+        //{
+        //    return BindingOperations.SetBinding(this, dp, binding);
+        //}
+
+        #region 
 
         //public String Name
         //{
@@ -36,6 +44,9 @@ namespace MyFirstWpfApplication
         //}
 
         //public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion 
+
     }
 
 }

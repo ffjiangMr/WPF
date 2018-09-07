@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,9 +28,14 @@ namespace MyFirstWpfApplication
         {
             InitializeComponent();
 
-            Student stu = new Student();
-            stu.SetBinding(Student.NameProperty, new Binding("Text") { Source = this.textBox1 });
-            this.textBox2.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = stu });
+
+            this.gridMain.AddHandler(Student.NameChangedEvent, new RoutedEventHandler(this.StudentNameChangedHandler));
+
+            //this.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.Button_Click));
+            //this.gridRoot.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.Button_Click));
+            //Student stu = new Student();
+            //stu.SetBinding(Student.NameProperty, new Binding("Text") { Source = this.textBox1 });
+            //this.textBox2.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = stu });
 
             #region 
             //List<Student> stuList = new List<Student>()
@@ -73,12 +80,29 @@ namespace MyFirstWpfApplication
 
         }
 
+        private void StudentNameChangedHandler(Object sender, RoutedEventArgs args)
+        {
+            MessageBox.Show((args.OriginalSource as Student).Name);
+        }
+
         private void ValidationError(Object sender, RoutedEventArgs args)
         {
             //if (Validation.GetErrors(this.textBox1).Count > 0)
             //{
             //    this.textBox1.ToolTip = Validation.GetErrors(this.textBox1)[0].ErrorContent.ToString();
             //}
+        }
+
+        private void ReportTimeHandler(Object sender, ReportTimeEventArgs e)
+        {
+            FrameworkElement element = sender as FrameworkElement;
+            String timeStr = e.ClickTime.ToString();
+            String content = $"{timeStr}到达{element.Name}";
+            //this.listBox.Items.Add(content);
+            if (element.Name.Equals("grid_2", StringComparison.InvariantCultureIgnoreCase))
+            {
+                e.Handled = true;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -105,11 +129,25 @@ namespace MyFirstWpfApplication
             //Student stu = new Student();
             ////stu.SetValue(Student.NameProperty, this.textBox1.Text);
             //this.textBox2.Text = (String)stu.GetValue(Student.NameProperty);
-            #endregion 
-            Human human = new Human();
-            School.SetGarde(human, 6);
-            Int32 grade = School.GetGarde(human);
-            MessageBox.Show(grade.ToString());
+            #endregion
+
+            #region
+
+            //Human human = new Human();
+            //School.SetGarde(human, 6);
+            //Int32 grade = School.GetGarde(human);
+            //MessageBox.Show(grade.ToString());
+
+            #endregion
+
+            Student stu = new Student() { Id = 101, Name = "Time", };
+            stu.Name = "Tom";
+            RoutedEventArgs arg = new RoutedEventArgs(Student.NameChangedEvent, stu);
+            this.button1.RaiseEvent(arg);
+
+            //String strOriginalSource = $"VisualTree start point {(e.OriginalSource as FrameworkElement).Name},type is {e.OriginalSource.GetType().Name}";
+            //String strSource = $"LogicalTree start point {(e.Source as FrameworkElement).Name},type is {e.Source.GetType().Name}";
+            //MessageBox.Show(strOriginalSource + Environment.NewLine + strSource);
         }
 
         private void SetBinding()
