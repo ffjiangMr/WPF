@@ -56,8 +56,14 @@
     </ApplicationDefinition>
     <Compile Include="Calculator.cs" />
     <Compile Include="CategoryToSourceConverter.cs" />
+    <Compile Include="ClearCommand.cs" />
     <Compile Include="CustomClass.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyButton.cs" />
+    <Compile Include="MyCommandSource.cs" />
     <Compile Include="MyUserControl.xaml.cs">
       <DependentUpon>MyUserControl.xaml</DependentUpon>
     </Compile>
@@ -70,6 +76,10 @@
     <Compile Include="StringToHumanTypeConverter.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="TimeButton.cs" />
+    <Page Include="MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

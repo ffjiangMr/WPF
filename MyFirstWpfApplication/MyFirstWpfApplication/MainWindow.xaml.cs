@@ -24,18 +24,29 @@ namespace MyFirstWpfApplication
     {
         private Student stu;
 
+        private RoutedCommand clearCmd = new RoutedCommand("Clear", typeof(MainWindow));
+
         public MainWindow()
         {
             InitializeComponent();
 
+            this.InitializeCommand();
 
-            this.gridMain.AddHandler(Student.NameChangedEvent, new RoutedEventHandler(this.StudentNameChangedHandler));
+            ClearCommand clearCommand = new ClearCommand();
+            this.ctrClear.Command = clearCommand;
+            this.ctrClear.CommandTarget = this.miniView;
+
+            #region 
+
+            //this.gridMain.AddHandler(Student.NameChangedEvent, new RoutedEventHandler(this.StudentNameChangedHandler));
 
             //this.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.Button_Click));
             //this.gridRoot.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.Button_Click));
             //Student stu = new Student();
             //stu.SetBinding(Student.NameProperty, new Binding("Text") { Source = this.textBox1 });
             //this.textBox2.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = stu });
+
+            #endregion
 
             #region 
             //List<Student> stuList = new List<Student>()
@@ -76,8 +87,39 @@ namespace MyFirstWpfApplication
             //binding.Path = new PropertyPath("Name");
 
             //BindingOperations.SetBinding(this.textBoxName, TextBox.TextProperty, binding);
-            #endregion 
+            #endregion
 
+        }
+
+        private void InitializeCommand()
+        {
+            //this.button1.Command = this.clearCmd;
+            //this.clearCmd.InputGestures.Add(new KeyGesture(Key.C, ModifierKeys.Alt));
+            //this.button1.CommandTarget = this.textBoxA;
+            //CommandBinding cb = new CommandBinding();
+            //cb.Command = this.clearCmd;
+            //cb.CanExecute += new CanExecuteRoutedEventHandler(this.cb_CanExecute);
+            //cb.Executed += new ExecutedRoutedEventHandler(this.cb_Executed);
+            //this.stackPanel.CommandBindings.Add(cb);
+        }
+
+        private void cb_CanExecute(Object sender, CanExecuteRoutedEventArgs args)
+        {
+            //if (String.IsNullOrEmpty(this.textBoxA.Text))
+            //{
+            //    args.CanExecute = false;
+            //}
+            //else
+            //{
+            //    args.CanExecute = true;
+            //}
+            //args.Handled = true;
+        }
+
+        private void cb_Executed(Object sender, ExecutedRoutedEventArgs args)
+        {
+            //this.textBoxA.Clear();
+            //args.Handled = true;
         }
 
         private void StudentNameChangedHandler(Object sender, RoutedEventArgs args)
@@ -140,10 +182,10 @@ namespace MyFirstWpfApplication
 
             #endregion
 
-            Student stu = new Student() { Id = 101, Name = "Time", };
-            stu.Name = "Tom";
-            RoutedEventArgs arg = new RoutedEventArgs(Student.NameChangedEvent, stu);
-            this.button1.RaiseEvent(arg);
+            //Student stu = new Student() { Id = 101, Name = "Time", };
+            //stu.Name = "Tom";
+            //RoutedEventArgs arg = new RoutedEventArgs(Student.NameChangedEvent, stu);
+            //this.button1.RaiseEvent(arg);
 
             //String strOriginalSource = $"VisualTree start point {(e.OriginalSource as FrameworkElement).Name},type is {e.OriginalSource.GetType().Name}";
             //String strSource = $"LogicalTree start point {(e.Source as FrameworkElement).Name},type is {e.Source.GetType().Name}";
