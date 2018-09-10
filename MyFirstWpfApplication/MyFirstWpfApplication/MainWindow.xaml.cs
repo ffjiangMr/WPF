@@ -32,9 +32,9 @@ namespace MyFirstWpfApplication
 
             this.InitializeCommand();
 
-            ClearCommand clearCommand = new ClearCommand();
-            this.ctrClear.Command = clearCommand;
-            this.ctrClear.CommandTarget = this.miniView;
+            //ClearCommand clearCommand = new ClearCommand();
+            //this.ctrClear.Command = clearCommand;
+            //this.ctrClear.CommandTarget = this.miniView;
 
             #region 
 
@@ -149,6 +149,8 @@ namespace MyFirstWpfApplication
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.Resources["res1"] = new TextBlock { Text = "天涯共此时" };
+            this.Resources["res2"] = new TextBlock { Text = "天涯共此时" };
 
             #region 
             //this.textBox.Text = this.FindResource("myString") as String;
@@ -182,6 +184,8 @@ namespace MyFirstWpfApplication
 
             #endregion
 
+            #region
+
             //Student stu = new Student() { Id = 101, Name = "Time", };
             //stu.Name = "Tom";
             //RoutedEventArgs arg = new RoutedEventArgs(Student.NameChangedEvent, stu);
@@ -190,6 +194,8 @@ namespace MyFirstWpfApplication
             //String strOriginalSource = $"VisualTree start point {(e.OriginalSource as FrameworkElement).Name},type is {e.OriginalSource.GetType().Name}";
             //String strSource = $"LogicalTree start point {(e.Source as FrameworkElement).Name},type is {e.Source.GetType().Name}";
             //MessageBox.Show(strOriginalSource + Environment.NewLine + strSource);
+
+            #endregion
         }
 
         private void SetBinding()
