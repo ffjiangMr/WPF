@@ -105,7 +105,7 @@ namespace MyFirstWpfApplication
             //    view.Car = item;
             //    this.listBoxCars.Items.Add(view);
             //}            
-            this.listBoxCars.ItemsSource = carList;
+            //this.listBoxCars.ItemsSource = carList;
         }
 
 
