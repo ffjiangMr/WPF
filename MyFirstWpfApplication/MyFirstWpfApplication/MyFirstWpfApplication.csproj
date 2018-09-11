@@ -54,7 +54,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AutomakerToLogoPathConverter.cs" />
     <Compile Include="Calculator.cs" />
+    <Compile Include="Car.cs" />
+    <Compile Include="CarDetailView.xaml.cs">
+      <DependentUpon>CarDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CarListItemView.xaml.cs">
+      <DependentUpon>CarListItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CategoryToSourceConverter.cs" />
     <Compile Include="ClearCommand.cs" />
     <Compile Include="CustomClass.cs" />
@@ -70,12 +78,21 @@
     <Compile Include="MyWindow.xaml.cs">
       <DependentUpon>MyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NameToPhotoPathConverter.cs" />
     <Compile Include="RangeValidationRule.cs" />
     <Compile Include="ReportTimeEventArgs.cs" />
     <Compile Include="School.cs" />
     <Compile Include="StringToHumanTypeConverter.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="TimeButton.cs" />
+    <Page Include="CarDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CarListItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +151,16 @@
   <ItemGroup>
     <Resource Include="Icons\1.png" />
     <Resource Include="Icons\2.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\Diablo.jpg" />
+    <Resource Include="Resources\Images\Gallardo.jpg" />
+    <Resource Include="Resources\Images\Murcielago.jpg" />
+    <Resource Include="Resources\Images\Reventon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logos\Lamborghini.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

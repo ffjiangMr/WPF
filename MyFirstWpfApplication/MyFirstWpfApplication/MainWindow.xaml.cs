@@ -31,7 +31,7 @@ namespace MyFirstWpfApplication
             InitializeComponent();
 
             this.InitializeCommand();
-
+            this.InitialCarList();
             //ClearCommand clearCommand = new ClearCommand();
             //this.ctrClear.Command = clearCommand;
             //this.ctrClear.CommandTarget = this.miniView;
@@ -90,6 +90,24 @@ namespace MyFirstWpfApplication
             #endregion
 
         }
+
+        private void InitialCarList()
+        {
+            List<Car> carList = new List<Car>() {
+                new Car(){ Automaker= "Lamborghini",Name="Diablo",Year="1990" ,TopSpeed="340"},
+                new Car(){ Automaker= "Lamborghini",Name="Gallardo",Year="2001" ,TopSpeed="353"},
+                new Car(){ Automaker= "Lamborghini",Name="Murcielago",Year="2003" ,TopSpeed="325"},
+                new Car(){ Automaker= "Lamborghini",Name="Reventon",Year="2008" ,TopSpeed="356"},
+            };
+            //foreach (var item in carList)
+            //{
+            //    CarListItemView view = new CarListItemView();
+            //    view.Car = item;
+            //    this.listBoxCars.Items.Add(view);
+            //}            
+            this.listBoxCars.ItemsSource = carList;
+        }
+
 
         private void InitializeCommand()
         {
@@ -261,5 +279,14 @@ namespace MyFirstWpfApplication
 
             //this.button1.SetBinding(Button.IsEnabledProperty, mb);
         }
+
+        //private void listBoxCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    CarListItemView view = e.AddedItems[0] as CarListItemView;
+        //    if (view != null)
+        //    {
+        //        this.detailView.Car = view.Car;
+        //    }
+        //}
     }
 }
