@@ -67,6 +67,7 @@
     <Compile Include="ClearCommand.cs" />
     <Compile Include="CustomClass.cs" />
     <Compile Include="IView.cs" />
+    <Compile Include="L2BConverter.cs" />
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -85,6 +86,7 @@
     <Compile Include="StringToHumanTypeConverter.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="TimeButton.cs" />
+    <Compile Include="Unit.cs" />
     <Page Include="CarDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

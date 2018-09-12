@@ -14,6 +14,8 @@ namespace MyFirstWpfApplication
 
         public String Name { get; set; }
         public Int32 Id { get; set; }
+        public String Skill { get; set; }
+        public Boolean HasJob { get; set; }
 
         //private String name;
         //public Int32 ID { get; set; }

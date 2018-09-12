@@ -29,7 +29,6 @@ namespace MyFirstWpfApplication
         public MainWindow()
         {
             InitializeComponent();
-
             this.InitializeCommand();
             this.InitialCarList();
             //ClearCommand clearCommand = new ClearCommand();
@@ -278,6 +277,16 @@ namespace MyFirstWpfApplication
             //mb.Converter = new LogonMultiBindingConverter();
 
             //this.button1.SetBinding(Button.IsEnabledProperty, mb);
+        }
+
+        private void textBoxName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //TextBox tb = e.OriginalSource as TextBox;
+            //ContentPresenter cp = tb.TemplatedParent as ContentPresenter;
+            //Student stu = cp.Content as Student;
+            //this.listViewStudent.SelectedItem = stu;
+            //ListViewItem lvi = this.listViewStudent.ItemContainerGenerator.ContainerFromItem(stu) as ListViewItem;
+            //MessageBox.Show(stu.Name);
         }
 
         //private void listBoxCars_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+           xmlns:c="clr-namespace:System.Collections;assembly=mscorlib"
         xmlns:local="clr-namespace:MyFirstWpfApplication"
         mc:Ignorable="d"
-        Title="留言板" Height="370" Width="623" Style="{DynamicResource WindowStyle1}">
+        Title="留言板" Height="370" Width="623" >
     <Window.Resources>
         <!--<ResourceDictionary>
             <sys:String x:Key="str">
@@ -48,6 +49,51 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:Unit}">
+            <Grid >
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Rectangle Stroke="Yellow" Fill="Orange" Width="{Binding Price}"/>
+                        <TextBlock Text="{Binding Year}"/>
+                    </Grid>
+                    <TextBlock Text="{Binding Price}" Margin="5,0"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <c:ArrayList x:Key="ds">
+            <local:Unit Year="2001 年" Price="100"/>
+            <local:Unit Year="2002 年" Price="120"/>
+            <local:Unit Year="2003 年" Price="140"/>
+            <local:Unit Year="2004 年" Price="160"/>
+            <local:Unit Year="2005 年" Price="180"/>
+            <local:Unit Year="2006 年" Price="200"/>
+        </c:ArrayList>
+        <c:ArrayList x:Key="stuList">
+            <local:Student Id="1" Name="Timoty Liu" Skill="WPF" HasJob="True"/>
+            <local:Student Id="2" Name="Tom Chang" Skill="BI/SQL" HasJob="True"/>
+            <local:Student Id="3" Name="Guan Chong" Skill="Writing" HasJob="False"/>
+            <local:Student Id="4" Name="Shanshan" Skill="C#/Java" HasJob="False"/>
+            <local:Student Id="5" Name="Pingping Zhang" Skill="Writing" HasJob="False"/>
+            <local:Student Id="6" Name="Kenny Tian" Skill="ASP.NET" HasJob="False"/>
+        </c:ArrayList>
+        <DataTemplate x:Key="nameDT">
+            <TextBox x:Name="textBoxName" Text="{Binding Name}" GotFocus="textBoxName_GotFocus" />
+        </DataTemplate>
+        <DataTemplate x:Key="skillDT">
+            <TextBox x:Name="textBoxSkill" Text="{Binding Skill}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="hjDT">
+            <CheckBox x:Name="checkBoxJob" IsChecked="{Binding HasJob}"/>
+        </DataTemplate>
+        <local:L2BConverter x:Key="cvtr"/>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.Self} ,Path=Text.Length, Converter={StaticResource cvtr}}" Value="false">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -55,6 +101,45 @@
             <GradientStop Color="White" Offset="1"/>
         </LinearGradientBrush>
     </Window.Background>
+
+    <Grid>
+        <Line X1="10" Y1="20" X2="260" Y2="20" Stroke="Red" StrokeThickness="10"/>
+        <Line X1="10" Y1="120" X2="260" Y2="120" StrokeDashArray="3" Stroke="Black" StrokeThickness="5"/>
+        <Line X1="10" Y1="260" X2="260" Y2="260" Stroke="Black" StrokeEndLineCap="Flat" StrokeThickness="6"/>
+        <Line X1="10" Y1="300" X2="260" Y2="300" StrokeEndLineCap="Round" StrokeThickness="8">
+            <Line.Stroke>
+                <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                    <GradientStop Color="Blue"/>
+                    <GradientStop Offset="1"/>
+                </LinearGradientBrush>
+            </Line.Stroke>
+        </Line>
+    </Grid>
+
+    <!--<StackPanel>
+        <TextBox Margin="5"/>
+        <TextBox Margin="5,0"/>
+        <TextBox Margin="5"/>
+    </StackPanel>-->
+
+    <!--<Grid Margin="5">
+        <ListView x:Name="listViewStudent" ItemsSource="{StaticResource stuList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="姓名" CellTemplate="{StaticResource nameDT}"/>
+                    <GridViewColumn Header="技术" CellTemplate="{StaticResource skillDT}"/>
+                    <GridViewColumn Header="已工作" CellTemplate="{StaticResource hjDT}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>-->
+
+    <!--<StackPanel Orientation="Vertical" >
+        <ListBox ItemsSource="{StaticResource ds}"/>
+        <ComboBox ItemsSource="{StaticResource ds}" Margin="5"/>
+    </StackPanel>-->
+
     <!--<StackPanel Orientation="Vertical" Margin="5" Grid.ColumnSpan="2">
         <TextBox Text="TextBox" Margin="5" Style="{DynamicResource RoundCornerTextBoxStyle}"></TextBox>
         <TextBox Text="TextBox" Margin="5" Style="{DynamicResource RoundCornerTextBoxStyle}"></TextBox>
@@ -62,11 +147,11 @@
         <ProgressBar Height="5" Style="{DynamicResource ProgressBarStyle1}"></ProgressBar>
     </StackPanel>-->
 
-    <StackPanel Orientation="Horizontal" Margin="5">
+    <!--<StackPanel Orientation="Horizontal" Margin="5">
         <UserControl ContentTemplate="{StaticResource carDetailViewTemplate}" Content="{Binding SelectedItem ,ElementName=listBoxCars}"/>
         <ListBox x:Name="listBoxCars" Width="180" Margin="5,0" ItemTemplate="{StaticResource carListItemViewTemplate}">
         </ListBox>
-    </StackPanel>
+    </StackPanel>-->
 
     <!--<StackPanel Orientation="Horizontal">
         <local:CarDetailView x:Name="detailView"/>
