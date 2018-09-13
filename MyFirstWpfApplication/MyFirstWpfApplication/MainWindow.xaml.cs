@@ -297,5 +297,18 @@ namespace MyFirstWpfApplication
         //        this.detailView.Car = view.Car;
         //    }
         //}
+        //Double o = 1.0;
+        //private void CloneVisual(Object sender, RoutedEventArgs args)
+        //{
+        //    //VisualBrush brush = new VisualBrush(this.realButton);
+        //    //Rectangle rect = new Rectangle();
+        //    //rect.Width = this.realButton.ActualWidth;
+        //    //rect.Height = this.realButton.ActualHeight;
+        //    //rect.Fill = brush;
+        //    //rect.Opacity = o;
+        //    //o -= 0.2;
+        //    //this.stackPanelRight.Children.Add(rect);
+        //}
+
     }
 }

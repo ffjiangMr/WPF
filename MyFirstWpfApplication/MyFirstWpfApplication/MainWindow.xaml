@@ -7,7 +7,7 @@
            xmlns:c="clr-namespace:System.Collections;assembly=mscorlib"
         xmlns:local="clr-namespace:MyFirstWpfApplication"
         mc:Ignorable="d"
-        Title="留言板" Height="370" Width="623" >
+        Title="留言板" Height="351" Width="330" >
     <Window.Resources>
         <!--<ResourceDictionary>
             <sys:String x:Key="str">
@@ -102,7 +102,147 @@
         </LinearGradientBrush>
     </Window.Background>
 
-    <Grid>
+    <Grid Margin="0,0,0,-4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="160"/>
+        </Grid.RowDefinitions>
+        <Path Stroke="Blue" StrokeThickness="2" Grid.Column="0" Grid.Row="0">
+            <Path.Data>
+                <LineGeometry StartPoint="20,20" EndPoint="140,140"/>
+            </Path.Data>
+        </Path>
+        <Path Stroke="Orange" Fill="Yellow" Grid.Row="0" Grid.Column="1">
+            <Path.Data>
+                <RectangleGeometry Rect="20,20,120,120" RadiusX="10" RadiusY="10"/>
+            </Path.Data>
+        </Path>
+        <Path Stroke="Green" Fill="LawnGreen" Grid.Row="1" Grid.Column="0">
+            <Path.Data>
+                <EllipseGeometry Center="80,80" RadiusX="60" RadiusY="40"/>
+            </Path.Data>
+        </Path>
+        <Path Stroke="Yellow" Fill="Orange" Grid.Column="1" Grid.Row="1" Data="M 0,0 c 30,0 70,100 100,100 S 170,0 200,0 ">
+            <!--<Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="0,100" IsClosed="True">
+                            <PathFigure.Segments>
+                                <ArcSegment Point="100,100" Size="30,30" SweepDirection="Clockwise" IsLargeArc="True" RotationAngle="45"/>
+                                <LineSegment Point="20,40"/>
+                                <LineSegment Point="40,110"/>
+                                <LineSegment Point="50,20"/>
+                                <LineSegment Point="80,110"/>
+                                <LineSegment Point="110,20"/>
+                                <LineSegment Point="120,110"/>
+                                <LineSegment Point="140,40"/>
+                                <LineSegment Point="135,140"/>
+                                
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>-->
+        </Path>
+    </Grid>
+
+    <!--<Grid>
+        <Ellipse Stroke="Gray" Width="140" Height="140" Cursor="Hand" ToolTip="A Ball">
+            <Ellipse.Fill>
+                <RadialGradientBrush GradientOrigin="0.2,0.8" RadiusX="0.75" RadiusY="0.75">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="90" CenterX="0.5" CenterY="0.5"/>
+                        </TransformGroup> 
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                    <GradientStop Color="#FF444444" Offset="0.66"/>
+                    <GradientStop Color="#FF999999" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+    </Grid>-->
+
+    <!--<Grid Margin="10" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="stackPanelLeft" Background="White">
+            <Button x:Name="realButton" Content="OK" Height="40"/>
+        </StackPanel>
+        <Button Content=">>>" Grid.Column="1" Margin="5,0" Click="CloneVisual"/>
+        <StackPanel x:Name="stackPanelRight" Background="White" Grid.Column="2"/>
+    </Grid>-->
+
+    <!--<Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="160"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="0" Grid.Row="0" Stroke="Black" Fill="LightBlue"/>
+        <Rectangle Grid.Row="0" Grid.Column="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFB6F8F1" Offset="0"/>
+                    <GradientStop Color="#FF0082BD" Offset="0.25"/>
+                    <GradientStop Color="#FF95DEFF" Offset="0.6"/>
+                    <GradientStop Color="#FF004F72" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Row="0" Grid.Column="4">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFB6F8F1" Offset="0"/>
+                    <GradientStop Color="#FF0082BD" Offset="0.25"/>
+                    <GradientStop Color="#FF95DEFF" Offset="0.75"/>
+                    <GradientStop Color="#FF004F72" Offset="1.5"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Row="2" Grid.Column="0">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Resources/Images/Diablo.jpg" Viewport="0,0,0.3,0.15" TileMode="Tile"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Row="2" Grid.Column="2">
+            <Rectangle.Fill>
+                <DrawingBrush Viewport="0,0,0.2,0.2" TileMode="Tile">
+                    <DrawingBrush.Drawing>
+                        <GeometryDrawing Brush="LightBlue">
+                            <GeometryDrawing.Geometry>
+                                <EllipseGeometry RadiusX="10" RadiusY="10"/>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Row="2" Grid.Column="4">
+            <Rectangle.Stroke>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="White" Offset="0.3"/>
+                    <GradientStop Color="Blue" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+    </Grid>-->
+
+    <!--<Grid>
         <Line X1="10" Y1="20" X2="260" Y2="20" Stroke="Red" StrokeThickness="10"/>
         <Line X1="10" Y1="120" X2="260" Y2="120" StrokeDashArray="3" Stroke="Black" StrokeThickness="5"/>
         <Line X1="10" Y1="260" X2="260" Y2="260" Stroke="Black" StrokeEndLineCap="Flat" StrokeThickness="6"/>
@@ -114,7 +254,7 @@
                 </LinearGradientBrush>
             </Line.Stroke>
         </Line>
-    </Grid>
+    </Grid>-->
 
     <!--<StackPanel>
         <TextBox Margin="5"/>
