@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -35,9 +36,16 @@ namespace PasswordTool
 
         private String generatorPassword;
         public String SecurityValue { get { return this.generatorPassword; } set { this.generatorPassword = value; RaisePropertyChanged("SecurityValue"); } }
+
+        private Int32 passwordLength;
         public MainWindow()
         {
             InitializeComponent();
+            var length = ConfigurationManager.AppSettings["passwordLength"];
+            if (Int32.TryParse(length, out this.passwordLength) == false)
+            {
+                this.passwordLength = 20;
+            }
             this.DataContext = this;
         }
 
@@ -101,8 +109,9 @@ namespace PasswordTool
                         appender.Append(DateTime.Now.ToString("MMddyyyyHHmmss"));
                         appender.Append(securityHolder);
                         appender.Append(SecurityKey);
-                        var temp = Encrypt(appender.ToString()).Substring(6, 9);
                         var random = new Random((Int32)DateTime.Now.Ticks);
+                        var temp = Encrypt(appender.ToString());
+                        temp = temp.Substring(random.Next(temp.Length - this.passwordLength / 2), this.passwordLength / 2);
                         appender.Clear();
                         for (Int32 flag = 0; flag < temp.Length; flag++)
                         {
@@ -110,6 +119,7 @@ namespace PasswordTool
                             appender.Append(Characters[random.Next(Characters.Count - 1)]);
                         }
                         this.SecurityValue = appender.ToString();
+                        this.SecurityValue = this.SecurityValue.PadRight(this.passwordLength, ':');
                         this.SaveSecurity();
                     }
                 }
